@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Packages to install
+sudo pacman -Syu --noconfirm alacritty rofi neovim helix lf zathura firefox lxappearance picom exazsh
+
+# Configs to set up
 cp -ra cfg/. ~/.config
-cp -ra home/. ~/
 cp -ran fonts/. ~/.fonts
+
+# Sets up Nvim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

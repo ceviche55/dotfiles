@@ -13,19 +13,19 @@ shell:
 # Font
 font:
   normal:
-    family: JetBrains Mono
+    family: JetBrainsMonoNerdFontMono
     style: Medium
 
   bold:
-    family: JetBrains Mono
+    family: JetBrainsMonoNerdFontMono
     style: Bold
 
   italic:
-    family: JetBrains Mono
+    family: JetBrainsMonoNerdFontMono
     style: Italic
 
   bold_italic:
-    family: JetBrains Mono
+    family: JetBrainsMonoNerdFontMono
     style: Bold Italic
 
   size: 10
