@@ -6,7 +6,7 @@ sudo pacman -Syu --noconfirm awesomewm alacritty rofi neovim helix lf zathura fi
 # Install yay
 mkdir ~/Downloads
 pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git ~/Downloads
+git clone https://aur.archlinux.org/yay.git ~/Downloads/yay
 cd ~/Downloads/yay
 makepkg -si
 cd ~
