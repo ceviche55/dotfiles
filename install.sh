@@ -6,6 +6,7 @@ sudo pacman -Syu --noconfirm alacritty rofi neovim helix lf zathura firefox lxap
 # Configs to set up
 cp -ra cfg/. ~/.config
 cp -ran fonts/. ~/.fonts
+cp -ra home/. ~/
 
 # Sets up Nvim
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
