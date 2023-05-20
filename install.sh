@@ -3,6 +3,12 @@
 # Packages to install
 sudo pacman -Syu --noconfirm alacritty rofi neovim helix lf zathura firefox lxappearance picom exa zsh nnn 
 
+# Oh My Zsh install
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# PowerLevel10k theme install
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 # Configs to set up
 cp -ra cfg/. ~/.config
 cp -ran fonts/. ~/.fonts
@@ -14,9 +20,6 @@ cp -ra home/. ~/
 
 # Sets up Nvim with packer bootstrap command
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-# PowerLevel10k theme install
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Install yay
 mkdir ~/Downloads
