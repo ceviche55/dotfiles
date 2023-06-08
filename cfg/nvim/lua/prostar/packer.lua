@@ -53,6 +53,22 @@ return require('packer').startup(function(use)
     }
 }
     use 'ThePrimeagen/harpoon'
+    use 'christoomey/vim-tmux-navigator'
+    use({
+        "Pocco81/auto-save.nvim",
+        config = function()
+            require("auto-save").setup {
+                -- your config goes here
+                -- or just leave it empty :)
+            }
+        end,
+    })
+    use 'numToStr/Comment.nvim'
+    use 'mfussenegger/nvim-dap'
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap"},
+    }
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
