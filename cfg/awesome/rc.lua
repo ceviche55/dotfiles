@@ -19,8 +19,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -43,27 +41,29 @@ do
 end
 -- }}}
 
--- Combine Split up configs
-require('signal')
-
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/hamu/.config/awesome/theme.lua")
-
--- This is used later as the default terminal and editor to run.
+sig = require('signal')
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+modkey = "Mod4" -- Super Key
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+local req = {
+  -- 'notif',
+  -- 'bar',
+  'menu',
+  -- 'rule',
+  -- 'titlebar',
+  -- 'client',
+  -- 'awful.autofocus',
+}
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
+for _, x in pairs(req) do
+  require(x)
+end
+
+awful.layout.layouts = { -- Layouts Table
     awful.layout.suit.tile,
     awful.layout.suit.tile.bottom,
     -- awful.layout.suit.floating,
@@ -71,22 +71,11 @@ awful.layout.layouts = {
 -- }}}
 
 -- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher({
+    image = beautiful.awesome_icon,
+    menu = MainMenu,
+})
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -97,7 +86,14 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget {
+  -- font = beautiful.barfont,
+  format="%a %b %d, %I:%M",
+  refresh=1,
+  -- align = 'center',
+  -- valign = 'center',
+  widget = wibox.widget.textclock
+}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -220,7 +216,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () MainMenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -249,8 +245,10 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () MainMenu:show() end,
               {description = "show main menu", group = "awesome"}),
+    awful.key({            }, "Print", function() awful.util.spawn('flameshot gui') end,
+              {description = "Open flameshot", group = "launcher"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -292,10 +290,10 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+    -- awful.key({ modkey,           }, "l", function () awful.layout.inc( 1)                end,
+    --           {description = "select next", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "l", function () awful.layout.inc(-1)                end,
+    --           {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -310,8 +308,9 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "space",   function()  awful.spawn.with_shell("rofi -show drun") end,
+              {description = "show rofi", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -337,6 +336,8 @@ clientkeys = gears.table.join(
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
+    awful.key({ modkey,           }, "y",      function (c) c.sticky = not c.sticky            end,
+        {description = "toggle sticky", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
@@ -479,13 +480,14 @@ awful.rules.rules = {
         -- and the name shown there might not match defined rules here.
         name = {
           "Event Tester",  -- xev.
+          "Blender Preferences",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      }, properties = { floating = true, titlebars_enabled = false }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
