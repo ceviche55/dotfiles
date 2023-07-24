@@ -1,8 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/hamu/Codes/practice/my-app
-- /home/hamu/Codes/practice/addrBookCPP
-- /home/hamu/dotfiles
+    - /home/hamu/dotfiles
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
