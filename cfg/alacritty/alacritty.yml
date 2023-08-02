@@ -11,23 +11,6 @@ shell:
     program: /bin/zsh
 
 # Font
-# font:
-#   normal:
-#     family: JetBrainsMonoNerdFontMono
-#     style: Medium
-
-#   bold:
-#     family: JetBrainsMonoNerdFontMono
-#     style: Bold
-
-#   italic:
-#     family: JetBrainsMonoNerdFontMono
-#     style: Italic
-
-#   bold_italic:
-#     family: JetBrainsMonoNerdFontMono
-#     style: Bold Italic
-
 font:
   normal:
     family: SpaceMonoNerdFont
@@ -45,7 +28,7 @@ font:
     family: SpaceMonoNerdFont
     style: Bold Italic
 
-  size: 13
+  size: 10
 
 cursor:
   style: beam

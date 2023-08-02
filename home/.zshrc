@@ -122,8 +122,8 @@ export EDITOR='helix'
 PS1="%F{green}%B%~%b%f "
 
 # Aliases
-# alias ls='exa'
-alias exa='exa -lah'
+alias ls='exa -a --icons'
+alias la='exa -lah --icons'
 alias clr='clear'
 alias hx='helix'
 alias cat='bat'
