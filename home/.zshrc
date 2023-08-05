@@ -81,6 +81,7 @@ plugins=(
   git
   zsh-autosuggestions
   colored-man-pages
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,10 +123,10 @@ export EDITOR='helix'
 PS1="%F{green}%B%~%b%f "
 
 # Aliases
-alias ls='exa -a --icons'
-alias la='exa -lah --icons'
+alias ls='exa --icons'
+alias li='exa -a --icons'
+alias ll='exa -lah --icons'
 alias clr='clear'
-alias hx='helix'
 alias cat='bat'
 alias n='nnn -de'
 alias py='python3'
@@ -165,6 +166,5 @@ bashcompinit
 # bindkey "^[[1;5D" backward-word
 # bindkey "5~" delete-word
 
-source /home/hamu/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=$PATH:/home/hamu/go/bin
 export PATH=$PATH:/home/hamu/.cargo/env

@@ -1,0 +1,110 @@
+Adobe Acrobat DC
+Adobe After Effects 2022
+Adobe After Effects 2023
+Adobe Creative Cloud
+Adobe Dimension
+Adobe Illustrator 2023
+Adobe InDesign 2023
+Adobe Lightroom CC
+Adobe Media Encoder 2023
+Adobe Photoshop 2023
+Adobe Premiere Pro 2023
+Adobe XD
+Alacritty.app
+Alfred 5.app
+AltServer.app
+AltTab.app
+Anki.app
+Arc.app
+Arduino.app
+Barrier.app
+Bartender 4.app
+Bitwarden.app
+Blackmagic RAW
+Blender.app
+Caffeine.app
+CopyClip.app
+Cron.app
+DaVinci Resolve
+Discord.app
+Dropover.app
+FL Studio 20.app
+Figma.app
+FileZilla.app
+Firefox.app
+GlobalProtect.app
+GoodNotes.app
+Google Chrome.app
+Google Docs.app
+Google Drive.app
+Google Sheets.app
+Google Slides.app
+ImageOptim.app
+Keynote.app
+LibreOffice.app
+Mac Mouse Fix.app
+Malwarebytes.app
+Maxon Cinema 4D 2023
+Maxon Cinema 4D R25
+Maxon Cinema 4D R26
+Maxon ZBrush 2022
+Maxon.app
+Menuwhere.app
+Microsoft Excel.app
+Microsoft OneNote.app
+Microsoft Outlook.app
+Microsoft PowerPoint.app
+Microsoft Remote Desktop.app
+Microsoft Teams.app
+Microsoft Word.app
+Middle.app
+Minecraft.app
+Mullvad VPN.app
+Multipass.app
+NotepadNext.app
+Notion.app
+Numbers.app
+OBS.app
+Obsidian.app
+OneDrive.app
+Original Prusa Drivers
+Pages.app
+Parsec.app
+PureRef.app
+Python 3.11
+Quitter.app
+Raspberry Pi Imager.app
+Raycast.app
+Rectangle.app
+Red Giant FxPlug
+Safari.app
+Setapp
+Setapp.app
+Slack.app
+SpoticaMenu.app
+Spotify.app
+Steam Link.app
+Sublime Text.app
+Syncthing.app
+TeX
+Thunderbird.app
+TickTick.app
+TinkerTool.app
+Unsplash Wallpapers.app
+Utilities
+VLC.app
+VNC Viewer.app
+VirtualBox.app
+Visual Studio Code.app
+Wacom Tablet.localized
+WireGuard.app
+XAMPP
+Xcode.app
+balenaEtcher.app
+draw.io.app
+duet.app
+iStat Menus.app
+iTerm.app
+net.downloadhelper.coapp.app
+redshift
+zoom.us.app

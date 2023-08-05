@@ -7,28 +7,28 @@ window:
     history: 15
 
 # Setting zsh as the default shell
-shell:
-    program: /bin/zsh
+#shell:
+#    program: /bin/zsh
 
 # Font
 font:
   normal:
-    family: SpaceMonoNerdFont
+    family: SpaceMono Nerd Font
     style: Regular
 
   bold:
-    family: SpaceMonoNerdFont
+    family: SpaceMono Nerd Font
     style: Bold
 
   italic:
-    family: SpaceMonoNerdFont
+    family: SpaceMono Nerd Font
     style: Italic
 
   bold_italic:
-    family: SpaceMonoNerdFont
+    family: SpaceMono Nerd Font
     style: Bold Italic
 
-  size: 10
+  size: 15
 
 cursor:
   style: beam

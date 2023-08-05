@@ -1,9 +1,0 @@
-inherits = 'base16_transparent'
-
-"ui.bufferline" = { bg = "bg1" }
-"ui.bufferline.active" = { bg = "bg3" }
-
-[palette]
-bg1 = "#121212"
-bg2 = "#181818"
-bg3 = "#2D2D2D"
