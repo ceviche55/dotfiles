@@ -93,15 +93,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-export EDITOR='helix'
-# fi
-
-
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -166,5 +157,10 @@ bashcompinit
 # bindkey "^[[1;5D" backward-word
 # bindkey "5~" delete-word
 
-export PATH=$PATH:/home/hamu/go/bin
-export PATH=$PATH:/home/hamu/.cargo/env
+# Enviroment
+export TERM="alacritty"
+export BROWSER="firefox"
+export SUDO_EDITOR="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim" 
+export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH"
