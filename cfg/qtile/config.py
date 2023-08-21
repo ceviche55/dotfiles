@@ -60,10 +60,10 @@ keys = [
 ]
 
 groups = []
-groupNames = ["1",  "2",  "3",  "w",  "e",  "r"]
-groupLabels = ["1",  "2",  "3",  "W",  "E",  "R"]
-groupLayouts = ["monadtall", "monadtall", "monadtall",
-                "verticaltile", "verticaltile", "verticaltile"]
+groupNames = ["1", "w", "2", "e", "3", "r"]
+groupLabels = ["1", "W", "2", "E", "3", "R"]
+groupLayouts = ["monadtall", "verticaltile", "monadtall", "verticaltile", "monadtall",
+                "verticaltile"]
 
 for i in range(len(groupNames)):
     groups.append(
@@ -133,9 +133,10 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Spacer(length=8),
                 widget.CurrentLayout(),
                 widget.GroupBox(),
-                widget.Prompt(),
+                widget.Spacer(length=8),
                 widget.WindowName(),
                 # widget.Chord(
                 #     chords_colors={
@@ -180,6 +181,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="flameshot"),  # GPG key password entry
         Match(wm_class="arandr"),  # GPG key password entry
     ]
 )
