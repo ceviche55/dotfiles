@@ -15,7 +15,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.spawn("rofi -show run"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"),
         desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -60,10 +60,10 @@ keys = [
 ]
 
 groups = []
-groupNames = ["1", "w", "2", "e", "3", "r"]
-groupLabels = ["1", "W", "2", "E", "3", "R"]
+groupNames = ["1", "w", "2", "e", "3", "r", "4", "5"]
+groupLabels = ["1", "W", "2", "E", "3", "R", "4", "5"]
 groupLayouts = ["monadtall", "verticaltile", "monadtall", "verticaltile", "monadtall",
-                "verticaltile"]
+                "verticaltile", "monadtall", "monadtall"]
 
 for i in range(len(groupNames)):
     groups.append(
@@ -81,7 +81,7 @@ for i in groups:
             Key(
                 [mod],
                 i.name,
-                lazy.to_screen(0) if i.name in '123' else lazy.to_screen(1),
+                lazy.to_screen(0) if i.name in '12345' else lazy.to_screen(1),
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
@@ -97,7 +97,7 @@ for i in groups:
     )
 
 layoutTheme = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 10,
     "border_focus": "#ABB2BF",
     "border_normal": "#3F4550",
@@ -108,8 +108,8 @@ layouts = [
         **layoutTheme,
         ratio=0.65
     ),
+    layout.Columns(**layoutTheme),
     layout.VerticalTile(**layoutTheme),
-    # layout.Columns(**layoutTheme),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -134,8 +134,13 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length=8),
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                # widget.CurrentLayout(),
+                widget.GroupBox(
+                    disable_drag=True,
+                    visible_groups=['1', '2', '3', '4', '5'],
+                    highlight_method='block',
+                    active='#CDD6E5',
+                ),
                 widget.Spacer(length=8),
                 widget.WindowName(),
                 # widget.Chord(
@@ -145,14 +150,18 @@ screens = [
                 #     name_transform=lambda name: name.upper(),
                 # ),
                 # widget.StatusNotifier(), # Systray for wayland
-                widget.Systray(),
-                widget.Spacer(length=8),
-                widget.Clock(format="%I:%M %p %m-%d %a"),
+                widget.WidgetBox(
+                    widgets=[widget.Systray()],
+                    close_button_location='right',
+                ),
+                # widget.Systray(),
+                # widget.Spacer(length=8),
+                widget.Clock(format="| %I:%M %p | %m-%d %a"),
                 widget.QuickExit(),
+                widget.Spacer(length=8),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background="#14161A",
         ),
     ),
 ]
@@ -200,6 +209,13 @@ auto_minimize = True
 def autostart():
     qHome = os.path.expanduser('~/.config/qtile/')
     subprocess.Popen([qHome + 'autostart.sh'])
+
+
+@hook.subscribe.resume
+def onWake():
+    lazy.to_screen(1)
+    lazy.group['w'].toscreen()
+    lazy.to_screen(0)
 
 
 # XXX - Gasp! We're lying here. In fact, nobody really uses or cares about this
