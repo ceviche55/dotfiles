@@ -181,6 +181,9 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width=2,
+    border_focus="#C678DD",
+    border_normal="#C678DD",
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -192,6 +195,8 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
         Match(wm_class="flameshot"),  # GPG key password entry
         Match(wm_class="arandr"),  # GPG key password entry
+        Match(wm_class="qimgv"),  # GPG key password entry
+        Match(wm_class="Lxappearance"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
