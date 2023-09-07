@@ -140,6 +140,8 @@ screens = [
                     visible_groups=['1', '2', '3', '4', '5'],
                     highlight_method='block',
                     active='#CDD6E5',
+                    rounded=False,
+                    this_current_screen_border='#4B5263'
                 ),
                 widget.Spacer(length=8),
                 widget.WindowName(),
