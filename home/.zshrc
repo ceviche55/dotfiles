@@ -158,7 +158,7 @@ bashcompinit
 # bindkey "5~" delete-word
 
 # Enviroment
-export TERM="alacritty"
+# export TERM="alacritty"
 export BROWSER="firefox"
 export SUDO_EDITOR="nvim"
 export EDITOR="nvim"

@@ -1,6 +1,6 @@
 return {
-  "chrisbra/Colorizer",
+  "norcalli/nvim-colorizer.lua",
   config = function()
-    vim.g.colorizer_auto_color = 1
+    require("colorizer").setup()
   end,
 }
