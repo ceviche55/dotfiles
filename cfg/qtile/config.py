@@ -15,7 +15,11 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.spawn("rofi -show drun"),
+    Key([mod], "p", lazy.spawn("/home/hamu/.config/rofi/powermenu/type-5/powermenu.sh"),
+        desc="Move window focus to other window"),
+    Key([mod], "space", lazy.spawn("/home/hamu/.config/rofi/launchers/type-7/launcher.sh"),
+        desc="Move window focus to other window"),
+    Key([mod], "v", lazy.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/launchers/type-7/style-4.rasi"),
         desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -61,8 +65,8 @@ keys = [
 
 groups = []
 groupNames = ["1", "w", "2", "e", "3", "r", "4", "5"]
-groupLabels = ["1", "W", "2", "E", "3", "R", "4", "5"]
-groupLayouts = ["monadtall", "verticaltile", "monadtall", "verticaltile", "monadtall",
+groupLabels = ["Gen", "S1", "Code", "S2", "Sch", "S3", "EX1", "EX2"]
+groupLayouts = ["monadtall", "verticaltile", "monadtall", "verticaltile", "columns",
                 "verticaltile", "monadtall", "monadtall"]
 
 for i in range(len(groupNames)):
@@ -101,23 +105,28 @@ layoutTheme = {
     "margin": 10,
     "border_focus": "#ABB2BF",
     "border_normal": "#3F4550",
+    "border_on_single": True,
+    "ratio": 0.65,
 }
 
 layouts = [
-    layout.MonadTall(
-        **layoutTheme,
-        ratio=0.65
-    ),
+    layout.MonadTall(**layoutTheme),
     layout.Columns(**layoutTheme),
     layout.VerticalTile(**layoutTheme),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
+    # layout.Tile(
+    #     **layoutTheme,
+    #     add_on_top=False,
+    #     master_length=1,
+    #     ratio=0.65,
+    #     shift_windows=False,
+    # ),
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
     # layout.TreeTab(),
     # layout.Zoomy(),
 ]
@@ -134,32 +143,24 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length=8),
-                # widget.CurrentLayout(),
                 widget.GroupBox(
                     disable_drag=True,
                     visible_groups=['1', '2', '3', '4', '5'],
                     highlight_method='block',
                     active='#CDD6E5',
                     rounded=False,
-                    this_current_screen_border='#4B5263'
+                    this_current_screen_border='#4B5263',
+                    other_screen_border='#282C34',
                 ),
                 widget.Spacer(length=8),
                 widget.WindowName(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
-                # widget.StatusNotifier(), # Systray for wayland
                 widget.WidgetBox(
                     widgets=[widget.Systray()],
                     close_button_location='right',
                 ),
-                # widget.Systray(),
-                # widget.Spacer(length=8),
+                widget.Spacer(length=4),
+                widget.CurrentLayout(),
                 widget.Clock(format="| %I:%M %p | %m-%d %a"),
-                widget.QuickExit(),
                 widget.Spacer(length=8),
             ],
             24,
@@ -199,6 +200,7 @@ floating_layout = layout.Floating(
         Match(wm_class="arandr"),  # GPG key password entry
         Match(wm_class="qimgv"),  # GPG key password entry
         Match(wm_class="Lxappearance"),  # GPG key password entry
+        Match(wm_name="Installation"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
