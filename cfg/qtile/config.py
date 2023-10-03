@@ -106,11 +106,13 @@ layoutTheme = {
     "border_focus": "#ABB2BF",
     "border_normal": "#3F4550",
     "border_on_single": True,
-    "ratio": 0.65,
 }
 
 layouts = [
-    layout.MonadTall(**layoutTheme),
+    layout.MonadTall(
+        **layoutTheme,
+        ratio=0.65
+    ),
     layout.Columns(**layoutTheme),
     layout.VerticalTile(**layoutTheme),
     # layout.Max(),
@@ -200,7 +202,7 @@ floating_layout = layout.Floating(
         Match(wm_class="arandr"),  # GPG key password entry
         Match(wm_class="qimgv"),  # GPG key password entry
         Match(wm_class="Lxappearance"),  # GPG key password entry
-        Match(wm_name="Installation"),  # GPG key password entry
+        Match(wm_class="Lxappearance"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
