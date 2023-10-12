@@ -554,4 +554,4 @@ end)
 -- Autostart Script
 awful.spawn.with_shell("sh ~/.config/awesome/startup.sh")
 --
---TODO: Bring the hotkey menu back
+--TODO: Bring the hotkey menu backslash

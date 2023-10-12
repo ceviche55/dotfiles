@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "awesome",
-        "client"
+        "client",
+        "dpi"
     ]
 }
