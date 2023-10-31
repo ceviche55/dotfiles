@@ -43,6 +43,8 @@ theme.border_normal = theme.bg2
 theme.border_focus  = theme.peach
 theme.border_marked = theme.bg3
 
+theme.master_width_factor = 0.6
+
 -- Variables set for theming notifications:
 -- notification_font
 -- notification_[bg|fg]

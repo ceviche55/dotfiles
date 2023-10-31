@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local bling = require("bling")
 
 ------------------------------------------------------------------
 -- Error handling
@@ -62,7 +63,7 @@ awful.layout.layouts = {
 	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.bottom,
 	-- awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
+	bling.layout.horizontal,
 	-- awful.layout.suit.fair.horizontal,
 	-- awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
@@ -163,7 +164,12 @@ local tasklistHotkeys = gears.table.join(
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+	local geometry = s.geometry
+	if geometry.width > geometry.height then -- landscape screen
+		awful.tag({ "MAIN", "CODE", "WORK", "EXT1", "EXT2" }, s, awful.layout.layouts[1])
+	else -- portrait screen
+		awful.tag({ "EMT1", "EMT2", "EMT3", "EMT4", "EMT5" }, s, awful.layout.layouts[2])
+	end
 
 	-- Layout Icon
 	s.mylayoutbox = awful.widget.layoutbox(s)
@@ -206,7 +212,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			-- wibox.widget.systray(),
+			wibox.widget.systray(),
 			textClock,
 			s.mylayoutbox,
 		},
@@ -443,6 +449,8 @@ awful.rules.rules = {
 				"pinentry",
 			},
 			class = {
+				"bauh", -- xev.
+				"steam",
 				"Arandr",
 				"Blueman-manager",
 				"Gpick",
@@ -454,12 +462,14 @@ awful.rules.rules = {
 				"veromix",
 				"xtightvncviewer",
 				"feh",
+				"pavucontrol", -- xev.
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
 			name = {
 				"Event Tester", -- xev.
+				"bauh", -- xev.
 			},
 			role = {
 				"AlarmWindow", -- Thunderbird's calendar.
@@ -467,7 +477,10 @@ awful.rules.rules = {
 				"pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 		},
-		properties = { floating = true },
+		properties = {
+			floating = true,
+			placement = awful.placement.centered,
+		},
 	},
 
 	-- Add titlebars to normal clients and dialogs
