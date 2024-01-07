@@ -1,12 +1,12 @@
 # Terminal Emulator Settings
 window:
+  option_as_alt: 'Both'
+
   padding:
     x: 5
     y: 20
   scrolling:
     history: 15
-
-  option_as_alt: 'Both'
 
 # Font
 font:
@@ -34,7 +34,7 @@ cursor:
   thickness: 0.20
   unfocused_hollow: false 
 
-colors:
+colors: # Catpuccin Mocha
     primary:
         background: "#1E1E2E" # base
         foreground: "#CDD6F4" # text
