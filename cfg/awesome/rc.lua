@@ -10,7 +10,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
-local bling = require("bling")
+-- local bling = require("bling")
 
 ------------------------------------------------------------------
 -- Error handling
@@ -63,8 +63,8 @@ awful.layout.layouts = {
 	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.bottom,
 	-- awful.layout.suit.tile.top,
-	bling.layout.horizontal,
-	-- awful.layout.suit.fair.horizontal,
+	-- bling.layout.horizontal,
+	awful.layout.suit.fair.horizontal,
 	-- awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
 	-- awful.layout.suit.max,
@@ -164,12 +164,15 @@ local tasklistHotkeys = gears.table.join(
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Each screen has its own tag table.
-	local geometry = s.geometry
-	if geometry.width > geometry.height then -- landscape screen
-		awful.tag({ "MAIN", "CODE", "WORK", "EXT1", "EXT2" }, s, awful.layout.layouts[1])
-	else -- portrait screen
-		awful.tag({ "EMT1", "EMT2", "EMT3", "EMT4", "EMT5" }, s, awful.layout.layouts[2])
-	end
+	awful.tag({ "MAIN", "CODE", "WORK", "EXT1", "EXT2" }, s, awful.layout.layouts[1])
+
+	-- Special Rules with vertical and horizontal screens but complicated things
+	-- local geometry = s.geometry
+	-- if geometry.width > geometry.height then -- landscape screen
+	-- 	awful.tag({ "MAIN", "CODE", "WORK", "EXT1", "EXT2" }, s, awful.layout.layouts[1])
+	-- else -- portrait screen
+	-- 	awful.tag({ "EMT1", "EMT2", "EMT3", "EMT4", "EMT5" }, s, awful.layout.layouts[2])
+	-- end
 
 	-- Layout Icon
 	s.mylayoutbox = awful.widget.layoutbox(s)
@@ -232,7 +235,7 @@ root.buttons(gears.table.join(
 ------------------------------------------------------------------
 --
 ------------------------------------------------------------------
--- Key bindings
+-- Keybinds
 globalkeys = gears.table.join(
 	-- Back and forth between tags
 	awful.key({ modkey }, ",", awful.tag.viewprev),
@@ -303,18 +306,18 @@ globalkeys = gears.table.join(
 		end
 	end),
 
-	-- Gui Menus: Launcher, Powermenu, and Clipboard
+	-- Gui Menus: App Launcher, Powermenu, Clipboard, and Screenshotter
 	awful.key({ modkey }, "space", function()
-		awful.spawn.with_shell("sh /home/hamu/.config/rofi/launchers/type-7/launcher.sh")
+		awful.spawn.with_shell("rofi -show drun")
 	end),
-	awful.key({ modkey }, "p", function()
-		awful.spawn.with_shell("sh /home/hamu/.config/rofi/powermenu/type-5/powermenu.sh")
-	end),
-	awful.key({ modkey }, "v", function()
-		awful.spawn.with_shell(
-			"rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/launchers/type-7/style-4.rasi"
-		)
-	end),
+	-- awful.key({ modkey }, "p", function()
+	-- 	awful.spawn.with_shell("sh /home/hamu/.config/rofi/powermenu/type-5/powermenu.sh")
+	-- end),
+	-- awful.key({ modkey }, "v", function()
+	-- 	awful.spawn.with_shell(
+	-- 		"rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/launchers/type-7/style-4.rasi"
+	-- 	)
+	-- end),
 	awful.key({}, "Print", function()
 		awful.spawn.with_shell("flameshot gui")
 	end)
@@ -567,4 +570,4 @@ end)
 -- Autostart Script
 awful.spawn.with_shell("sh ~/.config/awesome/startup.sh")
 --
---TODO: Bring the hotkey menu backslash
+--TODO: Bring the hotkey menu back
