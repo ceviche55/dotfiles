@@ -3,7 +3,7 @@ padding = {y = 20, x = 5}
 # option_as_alt = "OnlyLeft"
 
 [font]
-size = 12
+size = 15
 normal = { family = "SpaceMono Nerd Font Mono", style = "Regular" }
 italic = { family = "SpaceMono Nerd Font Mono", style = "Italic" }
 bold = { family = "SpaceMono Nerd Font Mono", style = "Bold" }
