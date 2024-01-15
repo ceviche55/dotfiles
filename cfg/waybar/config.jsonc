@@ -1,0 +1,16 @@
+{
+    "layer": "top",
+    "position": "left",
+    "modules-left": ["clock", "hyprland/workspaces"],
+    "modules-right": ["battery", "pulseaudio", "memory", "disk", "clock#cal"],
+    "battery": {
+        "format": "{icon}\n{capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format": "{:%I\n%M}"
+    },
+    "clock#cal": {
+        "format": "{:%a\n%d\n%b}"
+    }
+}
