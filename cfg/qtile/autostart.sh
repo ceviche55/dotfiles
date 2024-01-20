@@ -4,6 +4,6 @@ nitrogen --restore &
 lxsession &
 picom &
 flameshot &
-syncthing &
+# syncthing &
 greenclip daemon &
 "$HOME"/.screenlayout/screen.sh &

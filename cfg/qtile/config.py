@@ -17,7 +17,7 @@ keys = [
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "p", lazy.spawn("/home/hamu/.config/rofi/powermenu/type-5/powermenu.sh"),
         desc="Move window focus to other window"),
-    Key([mod], "space", lazy.spawn("/home/hamu/.config/rofi/launchers/type-7/launcher.sh"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"),
         desc="Move window focus to other window"),
     Key([mod], "v", lazy.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/launchers/type-7/style-4.rasi"),
         desc="Move window focus to other window"),
@@ -101,8 +101,8 @@ for i in groups:
     )
 
 layoutTheme = {
-    "border_width": 3,
-    "margin": 10,
+    "border_width": 5,
+    "margin": 20,
     "border_focus": "#ABB2BF",
     "border_normal": "#3F4550",
     "border_on_single": True,
