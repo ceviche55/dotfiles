@@ -7,8 +7,7 @@ if wezterm.config_builder then
 end
 
 config = {
-	color_scheme = "biscuit-dark", -- or biscuit-light (sourced from ./colors/)
-	-- Optional settings
+	color_scheme = "biscuit-dark",
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
 	window_decorations = "RESIZE",
