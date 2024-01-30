@@ -13,17 +13,15 @@ local theme = {}
 
 theme.font          = "FiraCode Nerd Font Propo, Medium 10"
 
-theme.bg1           = "#0c0c14"
-theme.bg2           = "#1e1e2e"
-theme.bg3           = "#6c7086"
+theme.bg1           = "#1A1515"
+theme.bg2           = "#2D2424"
+theme.bg3           = "#453636"
 
-theme.fg2           = "#9399b2"
-theme.fg1           = "#cdd6f4"
+theme.fg2           = "#DCC9BC"
+theme.fg1           = "#FFE9C7"
 
-theme.peach         = "#fab387"
-theme.red           = "#f38ba8"
-theme.blue          = "#89b4fa"
-theme.green         = "#a6e3a1"
+theme.ac1           = "#768F80"
+theme.red           = "#CF223E"
 
 theme.bg_normal     = theme.bg1
 theme.bg_focus      = theme.bg1
@@ -36,11 +34,11 @@ theme.fg_focus      = theme.fg1
 theme.fg_urgent     = theme.fg1
 theme.fg_minimize   = theme.fg1
 
-theme.useless_gap   = dpi(5)
+theme.useless_gap   = dpi(20)
 theme.border_width  = dpi(5)
 
 theme.border_normal = theme.bg2
-theme.border_focus  = theme.peach
+theme.border_focus  = theme.ac1
 theme.border_marked = theme.bg3
 
 theme.master_width_factor = 0.6

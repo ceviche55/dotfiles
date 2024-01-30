@@ -129,7 +129,16 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 textClock = wibox.widget({
 	-- font = beautiful.barfont,
-	format = "%a %b %d, %I:%M",
+	format = "%I\n%M",
+	refresh = 1,
+	align = "center",
+	valign = "center",
+	widget = wibox.widget.textclock,
+})
+
+textDate = wibox.widget({
+	-- font = beautiful.barfont,
+	format = "%a\n%b\n%d",
 	refresh = 1,
 	align = "center",
 	valign = "center",
@@ -201,20 +210,20 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
+	s.mywibox = awful.wibar({ position = "left", screen = s })
 
 	-- Add widgets to the wibox
 	s.mywibox:setup({
-		layout = wibox.layout.align.horizontal,
+		layout = wibox.layout.align.vertical,
 		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.fixed.vertical,
 			mylauncher,
 			s.mytaglist,
 			s.mypromptbox,
 		},
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.fixed.vertical,
 			wibox.widget.systray(),
 			textClock,
 			s.mylayoutbox,
@@ -282,7 +291,10 @@ globalkeys = gears.table.join(
 
 	-- Spawn Alacritty
 	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
+		awful.spawn(terminal, {
+			floating = true,
+			placement = awful.placement.centered,
+		})
 	end),
 
 	-- Managing Awesome
@@ -304,6 +316,14 @@ globalkeys = gears.table.join(
 		if c then
 			c:emit_signal("request::activate", "key.unminimize", { raise = true })
 		end
+	end),
+
+	-- Media Keys
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.spawn.with_shell("pactl set-sink-volume 0 +10%")
+	end),
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.spawn.with_shell("pactl set-sink-volume 0 -10%")
 	end),
 
 	-- Gui Menus: App Launcher, Powermenu, Clipboard, and Screenshotter
