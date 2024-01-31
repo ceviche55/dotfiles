@@ -218,6 +218,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Left widgets
 			layout = wibox.layout.fixed.vertical,
 			mylauncher,
+			textClock,
 			s.mytaglist,
 			s.mypromptbox,
 		},
@@ -225,7 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.vertical,
 			wibox.widget.systray(),
-			textClock,
+			textDate,
 			s.mylayoutbox,
 		},
 	})
@@ -299,7 +300,7 @@ globalkeys = gears.table.join(
 
 	-- Managing Awesome
 	awful.key({ modkey, "Control" }, "r", awesome.restart),
-	awful.key({ modkey, "Control" }, "q", awesome.quit),
+	awful.key({ modkey, "Control" }, "e", awesome.quit),
 
 	-- Switching Layouts
 	awful.key({ modkey }, "tab", function()

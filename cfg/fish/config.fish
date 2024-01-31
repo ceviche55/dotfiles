@@ -6,6 +6,8 @@ starship init fish | source
 
 fish_add_path ~/.cargo/bin/
 
+set fish_greeting
+
 alias clr=clear
 alias vi=nvim
 alias lzg=lazygit
