@@ -1,14 +1,25 @@
 {
     "layer": "top",
     "position": "left",
+    "width": 50,
+    "spacing": 8,
     "modules-left": ["clock", "hyprland/workspaces"],
-    "modules-right": ["battery", "pulseaudio", "memory", "disk", "clock#cal"],
-    "battery": {
-        "format": "{icon}\n{capacity}%",
-        "format-icons": ["", "", "", "", ""]
-    },
+    "modules-right": ["battery", "pulseaudio", "custom/memIcon", "memory", "clock#cal", "tray"],
     "clock": {
         "format": "{:%I\n%M}"
+    },
+    "battery": {
+        "format": " {icon}\n{capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": " 󰕾\n{volume}%"
+    },
+    "custom/memIcon": {
+      "format": "󰍛"
+    },
+    "memory": {
+        "format": "{percentage}%"
     },
     "clock#cal": {
         "format": "{:%a\n%d\n%b}"

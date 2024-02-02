@@ -1,0 +1,8 @@
+* {
+  font-family: FontAwesome, SpaceMonoNerdFont;
+}
+
+window#waybar {
+  background-color: #1A1515;
+  /* text-align: center; */
+}
