@@ -1,9 +1,9 @@
 [window]
-padding = {y = 20, x = 5}
+padding = { y = 30, x = 10 }
 # option_as_alt = "OnlyLeft"
 
 [font]
-size = 15
+size = 13
 normal = { family = "SpaceMono Nerd Font Mono", style = "Regular" }
 italic = { family = "SpaceMono Nerd Font Mono", style = "Italic" }
 bold = { family = "SpaceMono Nerd Font Mono", style = "Bold" }
@@ -15,73 +15,25 @@ thickness = 0.2
 unfocused_hollow = false
 
 [colors.primary]
-background = "#1E1E2E"
-bright_foreground = "#CDD6F4"
-dim_foreground = "#CDD6F4"
-foreground = "#CDD6F4"
+background = "#1a1515"
+foreground = "#ffe9c7"
 
 [colors.normal]
-black = "#45475A"
-blue = "#89B4FA"
-cyan = "#94E2D5"
-green = "#A6E3A1"
-magenta = "#F5C2E7"
-red = "#F38BA8"
-white = "#BAC2DE"
-yellow = "#F9E2AF"
+black = "#2d2424"
+red = "#cf2241"
+green = "#f07942"
+yellow = "#e39c45"
+blue = "#949f6b"
+magenta = "#716c97"
+cyan = "#ae3f8a"
+white = "#9c8181"
 
 [colors.bright]
-black = "#585B70"
-blue = "#89B4FA"
-cyan = "#94E2D5"
-green = "#A6E3A1"
-magenta = "#F5C2E7"
-red = "#F38BA8"
-white = "#A6ADC8"
-yellow = "#F9E2AF"
-
-[colors.cursor]
-cursor = "#F5E0DC"
-text = "#1E1E2E"
-
-[colors.dim]
-black = "#45475A"
-blue = "#89B4FA"
-cyan = "#94E2D5"
-green = "#A6E3A1"
-magenta = "#F5C2E7"
-red = "#F38BA8"
-white = "#BAC2DE"
-yellow = "#F9E2AF"
-
-[colors.selection]
-background = "#F5E0DC"
-text = "#1E1E2E"
-
-[colors.hints.end]
-background = "#A6ADC8"
-foreground = "#1E1E2E"
-
-[colors.hints.start]
-background = "#F9E2AF"
-foreground = "#1E1E2E"
-
-[colors.search.focused_match]
-background = "#A6E3A1"
-foreground = "#1E1E2E"
-
-[colors.search.matches]
-background = "#A6ADC8"
-foreground = "#1E1E2E"
-
-[colors.vi_mode_cursor]
-cursor = "#B4BEFE"
-text = "#1E1E2E"
-
-[[colors.indexed_colors]]
-color = "#FAB387"
-index = 16
-
-[[colors.indexed_colors]]
-color = "#F5E0DC"
-index = 17
+black = "#725a5a"
+red = "#e3556f"
+green = "#f49d75"
+yellow = "#edbf86"
+blue = "#b0b893"
+magenta = "#9894b3"
+cyan = "#ca6bac"
+white = "#ffe9c7"

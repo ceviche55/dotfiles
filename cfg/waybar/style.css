@@ -4,5 +4,18 @@
 
 window#waybar {
   background-color: #1A1515;
+  color: #FFE9C7;
   /* text-align: center; */
+}
+
+#clock.time {
+  margin: 0 20px;
+}
+
+#clock.cal {
+  margin: 0 20px;
+}
+
+#tray {
+  margin: 0 20px;
 }
