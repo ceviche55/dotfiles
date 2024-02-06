@@ -11,6 +11,7 @@ config = {
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
 	window_decorations = "RESIZE",
+	enable_wayland = false,
 }
 
 return config
