@@ -1,9 +1,10 @@
 {
     "layer": "top",
     "position": "top",
-    "width": 2450,
     "spacing": 8,
+    "height": 10,
     "modules-left": ["clock#time", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "battery", "pulseaudio", "memory", "clock#cal"],
     "clock#time": {
         "format": "{:%I:%M}"
